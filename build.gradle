@@ -1,0 +1,44 @@
+plugins {
+  id 'maven-publish'
+  id 'io.freefair.lombok' version '6.5.+'
+}
+
+version "0.0.1"
+
+allprojects {
+  group "com.mx.path.demo"
+  description "The Path Accessor Demo"
+  version rootProject.version
+  apply plugin: 'java'
+  sourceCompatibility = 1.8
+  targetCompatibility = 1.8
+
+  repositories {
+    maven { url 'https://artifactory.internal.mx:443/gradle-local' }
+    maven { url 'https://artifactory.internal.mx:443/maven-local' }
+    mavenCentral()
+    mavenLocal()
+    maven { url "https://jitpack.io" }
+  }
+}
+
+configure(project.subprojects) {
+  apply plugin: "maven-publish"
+  apply plugin: "io.freefair.lombok"
+}
+
+task subdependencies {
+  subprojects.each {
+    it.afterEvaluate {
+      def dependenciesTask = it.tasks.findByName("dependencies")
+      dependsOn(dependenciesTask)
+    }
+  }
+}
+
+project.tasks.getByPath("dependencies").finalizedBy("subdependencies")
+
+wrapper {
+  gradleVersion = "7.4.1"
+  distributionType = Wrapper.DistributionType.ALL
+}

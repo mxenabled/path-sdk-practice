@@ -1,0 +1,8 @@
+superfake:
+
+  accessor:
+    class: superfake.stub.Accessor
+
+  gateways:
+    id: { }
+    accounts: { }
