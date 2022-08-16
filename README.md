@@ -16,6 +16,27 @@ The challenge:
 * Create a Path Accessor that connects to HypoFin
 * Wire the accessor into the Superfake Balances
 
+## Terminology
+
+`Path` is a framework that allows for fast creation of "adapter" code, called an accessor. The job of the accessor is
+to translate the requests and responses from disparate systems into, in this case, MDX models and functions. This makes
+the interaction between providers standard.
+
+Any application that runs on the JVM can use a configuration file to tie together accessor implementations, along with
+behaviors and facilities to create a clean programming interface.
+
+![](./assets/path_terminology.png)
+
+`Facilities` provide operational support for the accessors and behaviors. By providing a simple implementation of an interface
+the Path app can have access to key/value storage, encryption appliances, or exception reporting services. The accessors
+don't need to change if it now needs to use Cassandra instead of Redis for session persistence, just swap out the
+implementation class and configuration, and the app should continue to work.
+
+`Behaviors` provide "cross-cutting concerns" like caching, access control, or access logging. They are implemented much
+like Rails (Rack) middleware or Spring Boot filters. By implementing these separate from the accessors, we can keep the
+accessor code focused on translating the disparate system protocols instead of managing cached accounts, for instance. 
+It also allows them to be placed where needed, via configuration, independent of the accessor's implementation.
+
 ## Setup
 
 ### Install a JDK
