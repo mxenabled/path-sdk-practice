@@ -69,12 +69,14 @@ RESPONSE
   {
     "id": "a0001",
     "desc": "Fake Checking",
-    "t": "CHK"
+    "t": "CHK",
+    "bal": 1867.37
   },
   {
     "id": "a0003",
     "desc": "Fake Savings",
-    "t": "SAV"
+    "t": "SAV",
+    "bal": 17099.33
   }
 ]
 ```
@@ -96,7 +98,7 @@ RESPONSE
 {
   "id": "a0001",
   "desc": "Fake Checking",
-  "t": "CHK"
+  "t": "CHK",
+  "bal": 739.77
 }
-]
 ```
