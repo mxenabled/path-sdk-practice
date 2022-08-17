@@ -1,4 +1,13 @@
 superfake:
+
+  accessor:
+    class: superfake.stub.Accessor
+
+  gateways:
+    id: { }
+    accounts: { }
+
+
   facilities:
     cacheStore:
       class: com.mx.redis.RedisStore
@@ -48,14 +57,3 @@ superfake:
         keys:
           - 9rXVaIYKFoEwZkY3eDPHneNVVLAAtNhDrF3ItjZDzNvYInSOROfg5WsWyf18AS6p0lNHzGqmGr1EeVWIKWKg3Xvr1f1wa9uVHHxUa3tcOUvZkaZYDyDX3pErXeXaMPyP
 
-  accessor:
-    class: superfake.stub.Accessor
-    connections:
-      hypofin:
-        baseUrl: http://localhost:3000
-        configurations:
-          clientId: c0002
-
-  gateways:
-    id: { }
-    accounts: { }

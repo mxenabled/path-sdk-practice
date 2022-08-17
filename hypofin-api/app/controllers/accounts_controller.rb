@@ -10,6 +10,18 @@ class AccountsController < ApplicationController
         desc: 'Checking Account',
         t: 'CHK',
         bal: (rand * 10_000).round(2)
+      },
+      {
+        id: 'acct-456',
+          desc: 'Savings Account',
+          t: 'SAV',
+          bal: (rand * 10_000).round(2)
+      },
+      {
+        id: 'acct-456',
+          desc: 'Auto Loan',
+          t: 'LOAN',
+          bal: (rand * 30_000).round(2)
       }
     ]
   end

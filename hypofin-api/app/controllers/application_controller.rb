@@ -39,7 +39,7 @@ class ApplicationController < ::ActionController::API
     end
   end
 
-  def validate_clientid
+  def verify_clientid
     render status: :unauthorized unless request.headers['clientId'].present?
   end
 end

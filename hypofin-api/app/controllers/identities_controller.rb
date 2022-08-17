@@ -11,6 +11,6 @@ class IdentitiesController < ::ApplicationController
   end
 
   def destroy
-    head status: :no_content
+    head 204
   end
 end
