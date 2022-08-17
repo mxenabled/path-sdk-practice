@@ -10,7 +10,9 @@ sourceCompatibility = 1.8
 dependencies {
   implementation project(":hypofin-accessor")
   implementation "com.mx.path.api.gateway:mdx-gateways:18.0.0.0.pre"
-  implementation "com.mx.path.service.facility.store:redis:4.+"
+  implementation 'com.mx.path.service.facility.store:redis:10.0.0.pre'
+  implementation 'com.mx.path.service.facility.fault-tolerant-executor:resilience4j:10.0.0.pre'
+  implementation 'com.mx.path.service.facility.encryption-service:jasypt:10.0.0.pre'
 
   implementation "commons-io:commons-io:20030203.000550" // for file reading
 }

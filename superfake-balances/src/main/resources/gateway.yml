@@ -1,7 +1,60 @@
 superfake:
+  facilities:
+    cacheStore:
+      class: com.mx.redis.RedisStore
+      configurations:
+        host: "localhost"
+        port: "6379"
+        connectionTimeoutSeconds: 10
+        computationThreadPoolSize: 5
+        ioThreadPoolSize: 5
+
+    sessionStore:
+      class: com.mx.redis.RedisStore
+      configurations:
+        host: "localhost"
+        port: "6379"
+        connectionTimeoutSeconds: 10
+        computationThreadPoolSize: 5
+        ioThreadPoolSize: 5
+
+    eventBus:
+      class: com.mx.path.gateway.events.GatewayEventBus
+
+    faultTolerantExecutor:
+      class: com.mx.path.service.facility.fault_tolerant_executor.Resilience4jFaultTolerantExecutor
+      configurations:
+        defaults:
+          circuitBreaker:
+            enabled: true
+            minimumNumberOfCalls: 100
+            permittedNumberOfCallsInHalfOpenState: 30
+            waitDurationInOpenStateMillis: 5000
+            slidingWindowType: TIME_BASED
+            slidingWindowDurationSeconds: 10
+          bulkhead:
+            enabled: true
+            maxConcurrentCalls: 30
+          timeLimiter:
+            enabled: true
+            timeoutDurationMillis: 60000
+
+    encryptionService:
+      class: com.mx.path.service.facility.encryption.jasypt.JasyptEncryptionService
+      configurations:
+        enabled: true
+        poolSize: 10
+        currentKeyIndex: 0
+        keys:
+          - 9rXVaIYKFoEwZkY3eDPHneNVVLAAtNhDrF3ItjZDzNvYInSOROfg5WsWyf18AS6p0lNHzGqmGr1EeVWIKWKg3Xvr1f1wa9uVHHxUa3tcOUvZkaZYDyDX3pErXeXaMPyP
 
   accessor:
     class: superfake.stub.Accessor
+    connections:
+      hypofin:
+        baseUrl: http://localhost:3000
+        configurations:
+          clientId: c0002
 
   gateways:
     id: { }

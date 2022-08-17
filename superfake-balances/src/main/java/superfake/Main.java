@@ -9,9 +9,12 @@ import com.mx.models.account.Account;
 import com.mx.models.id.Authentication;
 import com.mx.path.gateway.api.Gateway;
 import com.mx.path.gateway.api.GatewayConfigurator;
+import com.mx.path.model.context.RequestContext;
 import com.mx.path.model.context.Session;
+import com.mx.path.model.context.facility.Facilities;
 import com.mx.serializers.YamlSerializer;
 import org.apache.commons.io.IOUtil;
+import superfake.lib.Logger;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,6 +31,8 @@ public class Main {
     Map<String, Gateway> gateways = new GatewayConfigurator().buildFromYaml(gatewayYaml);
     Gateway gateway = gateways.get("superfake");
 
+    Logger.log(gateway.describe());
+
     YamlSerializer yamlSerializer = new YamlSerializer(YamlSerializer.Parameters.builder().maxYamlAliases(100).build());
     ObjectArray users = (ObjectArray) yamlSerializer.fromYaml(usersYaml);
 
@@ -39,6 +44,9 @@ public class Main {
       authentication.setPassword(((ObjectMap) user).getAsString("password").toCharArray());
 
       Session.createSession();
+      Session.current().setClientId("superfake");
+      RequestContext.builder().clientId("superfake").build().register();
+
       AccessorResponse<Authentication> authenticationResult = gateway.id().authenticate(authentication);
 
       if (Strings.isNotBlank(authenticationResult.getResult().getUserId())) {
