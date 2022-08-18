@@ -13,3 +13,6 @@
 *.iml
 *.ipr
 **/out/
+
+### Ignore Accessor Java Code
+hypofin-accessor/src/main/java**/*.java
