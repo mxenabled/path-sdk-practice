@@ -14,8 +14,6 @@ allprojects {
   targetCompatibility = 1.8
 
   repositories {
-    maven { url 'https://artifactory.internal.mx:443/gradle-local' }
-    maven { url 'https://artifactory.internal.mx:443/maven-local' }
     mavenCentral()
     mavenLocal()
     maven { url "https://jitpack.io" }
