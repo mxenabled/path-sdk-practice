@@ -1,3 +1,5 @@
+Issues: https://github.com/mxenabled/path-sdk/issues
+
 # Path Accessor Practice
 
 This repo is used for accessor construction demos and training.
