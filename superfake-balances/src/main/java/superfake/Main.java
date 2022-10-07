@@ -1,18 +1,17 @@
 package superfake;
 
-import com.mx.accessors.AccessorResponse;
+import com.mx.common.accessors.AccessorResponse;
 import com.mx.common.collections.ObjectArray;
 import com.mx.common.collections.ObjectMap;
 import com.mx.common.lang.Strings;
-import com.mx.models.MdxList;
+import com.mx.common.models.MdxList;
+import com.mx.common.serialization.ObjectMapYamlDeserializer;
 import com.mx.models.account.Account;
 import com.mx.models.id.Authentication;
 import com.mx.path.gateway.api.Gateway;
 import com.mx.path.gateway.api.GatewayConfigurator;
 import com.mx.path.model.context.RequestContext;
 import com.mx.path.model.context.Session;
-import com.mx.path.model.context.facility.Facilities;
-import com.mx.serializers.YamlSerializer;
 import org.apache.commons.io.IOUtil;
 import superfake.lib.Logger;
 
@@ -33,7 +32,7 @@ public class Main {
 
     Logger.log(gateway.describe());
 
-    YamlSerializer yamlSerializer = new YamlSerializer(YamlSerializer.Parameters.builder().maxYamlAliases(100).build());
+    ObjectMapYamlDeserializer yamlSerializer = new ObjectMapYamlDeserializer(ObjectMapYamlDeserializer.Parameters.builder().maxYamlAliases(100).build());
     ObjectArray users = (ObjectArray) yamlSerializer.fromYaml(usersYaml);
 
     Map<String, BigDecimal> ledger = new HashMap<>();

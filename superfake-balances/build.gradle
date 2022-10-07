@@ -10,10 +10,10 @@ sourceCompatibility = 1.8
 dependencies {
   implementation project(":hypofin-accessor")
 
-  implementation "com.github.mxenabled.path-mdx-model:mdx-gateways:0.+"
-  implementation "com.github.mxenabled.path-facilities:store-redis:0.+"
-  implementation "com.github.mxenabled.path-facilities:fault-tolerant-executor-resilience4j:0.+"
-  implementation "com.github.mxenabled.path-facilities:encryption-service-jasypt:0.+"
+  implementation "com.github.mxenabled.path-mdx-model:mdx-gateways:1.+"
+  implementation "com.github.mxenabled.path-facilities:store-redis:1.+"
+  implementation "com.github.mxenabled.path-facilities:fault-tolerant-executor-resilience4j:1.+"
+  implementation "com.github.mxenabled.path-facilities:encryption-service-jasypt:1.+"
 
   implementation "commons-io:commons-io:20030203.000550" // for file reading
 }
