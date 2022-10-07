@@ -7,8 +7,8 @@ jar.archiveBaseName = "hypofin-accessor"
 sourceCompatibility = 1.8
 
 dependencies {
-  implementation "com.github.mxenabled.path-sdk:http:0.+"
-  implementation "com.github.mxenabled.path-mdx-model:mdx-gateways:0.+"
+  implementation "com.github.mxenabled.path-sdk:http:1.+"
+  implementation "com.github.mxenabled.path-mdx-model:mdx-gateways:1.+"
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
