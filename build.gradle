@@ -1,6 +1,6 @@
 plugins {
-  id 'maven-publish'
-  id 'io.freefair.lombok' version '6.5.+'
+  id "maven-publish"
+  id "io.freefair.lombok" version "6.5.+"
 }
 
 version "0.0.1"
@@ -9,14 +9,18 @@ allprojects {
   group "com.mx.path.demo"
   description "The Path Accessor Demo"
   version rootProject.version
-  apply plugin: 'java'
+  apply plugin: "java"
   sourceCompatibility = 1.8
   targetCompatibility = 1.8
+
+  dependencies {
+    implementation platform("com.mx.path-mdx-model:platform:[1.0,2.0[")
+    implementation platform("com.mx.path-facilities:platform:[1.0,2.0[")
+  }
 
   repositories {
     mavenCentral()
     mavenLocal()
-    maven { url "https://jitpack.io" }
   }
 }
 

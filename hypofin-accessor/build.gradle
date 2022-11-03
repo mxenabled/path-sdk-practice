@@ -1,5 +1,5 @@
 plugins {
-  id 'java-library'
+  id "java-library"
 }
 
 group "com.mx.path.demo"
@@ -7,8 +7,8 @@ jar.archiveBaseName = "hypofin-accessor"
 sourceCompatibility = 1.8
 
 dependencies {
-  implementation "com.github.mxenabled.path-sdk:http:1.+"
-  implementation "com.github.mxenabled.path-mdx-model:mdx-gateways:1.+"
+  implementation "com.mx.path-core:http"
+  implementation "com.mx.path-mdx-model:mdx-gateways"
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
